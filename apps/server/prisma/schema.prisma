@@ -1,0 +1,212 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Clinic {
+  id           String   @id @default(cuid())
+  name         String
+  slug         String   @unique
+  email        String   @unique
+  phone        String
+  address      String
+  city         String
+  postalCode   String
+  country      String   @default("DE")
+  timezone     String   @default("Europe/Berlin")
+  website      String?
+  logoUrl      String?
+  primaryColor String?
+  parkingInfo  String?
+  emergencyPhone String?
+  languages    String[] @default(["de"])
+
+  // Insurance
+  acceptsGKV     Boolean  @default(true)
+  acceptsPKV     Boolean  @default(true)
+  acceptsCash    Boolean  @default(true)
+  gkvProviders   String[] @default([])
+  pkvProviders   String[] @default([])
+  insuranceNotes String?
+
+  // Widget customisation
+  widgetGreeting String?
+  widgetTheme    String   @default("light")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  doctors          Doctor[]
+  appointmentTypes AppointmentType[]
+  appointments     Appointment[]
+  patients         Patient[]
+  faqItems         FaqItem[]
+  users            ClinicUser[]
+
+  @@map("clinics")
+}
+
+model ClinicUser {
+  id       String @id @default(cuid())
+  clinicId String
+  clerkId  String @unique
+  role     String @default("admin") // admin | receptionist
+
+  clinic Clinic @relation(fields: [clinicId], references: [id])
+
+  @@map("clinic_users")
+}
+
+model Doctor {
+  id        String   @id @default(cuid())
+  clinicId  String
+  firstName String
+  lastName  String
+  title     String?
+  specialty String?
+  avatarUrl String?
+  bio       String?
+  languages String[] @default(["de"])
+  isActive  Boolean  @default(true)
+
+  clinic       Clinic        @relation(fields: [clinicId], references: [id])
+  workingHours WorkingHours[]
+  blockedDates BlockedDate[]
+  appointments Appointment[]
+
+  @@map("doctors")
+}
+
+model WorkingHours {
+  id        String @id @default(cuid())
+  doctorId  String
+  dayOfWeek Int    // 0=Sun 1=Mon … 6=Sat
+  startTime String // "08:00"
+  endTime   String // "18:00"
+
+  doctor Doctor @relation(fields: [doctorId], references: [id])
+  breaks Break[]
+
+  @@map("working_hours")
+}
+
+model Break {
+  id             String @id @default(cuid())
+  workingHoursId String
+  startTime      String
+  endTime        String
+
+  workingHours WorkingHours @relation(fields: [workingHoursId], references: [id])
+
+  @@map("breaks")
+}
+
+model BlockedDate {
+  id        String  @id @default(cuid())
+  doctorId  String
+  date      String  // ISO date "2025-12-24"
+  reason    String?
+  allDay    Boolean @default(true)
+  startTime String?
+  endTime   String?
+
+  doctor Doctor @relation(fields: [doctorId], references: [id])
+
+  @@map("blocked_dates")
+}
+
+model AppointmentType {
+  id               String  @id @default(cuid())
+  clinicId         String
+  name             String
+  nameDe           String
+  durationMinutes  Int
+  bufferMinutes    Int     @default(0)
+  color            String  @default("#2563eb")
+  isEmergency      Boolean @default(false)
+  description      String?
+  requiresNew      Boolean @default(false)
+  isActive         Boolean @default(true)
+
+  clinic       Clinic        @relation(fields: [clinicId], references: [id])
+  appointments Appointment[]
+
+  @@map("appointment_types")
+}
+
+model Patient {
+  id                  String   @id @default(cuid())
+  clinicId            String
+  firstName           String
+  lastName            String
+  email               String
+  phone               String
+  dob                 String?
+  insuranceType       String?  // gkv | pkv | cash
+  insuranceProvider   String?
+  preferredLanguage   String   @default("de")
+  gdprConsentAt       DateTime
+  marketingConsentAt  DateTime?
+  createdAt           DateTime @default(now())
+
+  clinic       Clinic        @relation(fields: [clinicId], references: [id])
+  appointments Appointment[]
+
+  @@unique([clinicId, email])
+  @@map("patients")
+}
+
+model Appointment {
+  id                  String   @id @default(cuid())
+  clinicId            String
+  doctorId            String
+  appointmentTypeId   String
+  patientId           String?
+  patientFirstName    String
+  patientLastName     String
+  patientEmail        String
+  patientPhone        String
+  patientDob          String?
+  insuranceType       String   @default("gkv")
+  insuranceProvider   String?
+  notes               String?
+  status              String   @default("pending") // pending|confirmed|cancelled|no_show|completed
+  startTime           DateTime
+  endTime             DateTime
+  bookedAt            DateTime @default(now())
+  reminderSentAt      DateTime?
+  cancelledAt         DateTime?
+  cancellationReason  String?
+  bookingSource       String   @default("widget") // widget|phone|walkin|admin
+  confirmationCode    String   @unique
+
+  clinic          Clinic          @relation(fields: [clinicId], references: [id])
+  doctor          Doctor          @relation(fields: [doctorId], references: [id])
+  appointmentType AppointmentType @relation(fields: [appointmentTypeId], references: [id])
+  patient         Patient?        @relation(fields: [patientId], references: [id])
+
+  @@index([clinicId, startTime])
+  @@index([doctorId, startTime])
+  @@index([patientEmail])
+  @@map("appointments")
+}
+
+model FaqItem {
+  id       String @id @default(cuid())
+  clinicId String
+  question String
+  answer   String
+  category String @default("general")
+  language String @default("de")
+  sortOrder Int   @default(0)
+
+  clinic Clinic @relation(fields: [clinicId], references: [id])
+
+  @@map("faq_items")
+}
