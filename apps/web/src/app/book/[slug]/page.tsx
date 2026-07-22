@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import { SlotPicker } from "@/components/booking/SlotPicker";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { RuleBasedChat } from "@/components/chat/RuleBasedChat";
-import { PraxisAIBadge } from "@/components/ui/PraxisAIBadge";
+import { PraxisBookBadge } from "@/components/ui/PraxisBookBadge";
 import { formatDateTime } from "@/lib/utils";
 import { CheckCircle, Calendar, ChevronRight, Globe } from "lucide-react";
 
@@ -257,7 +257,7 @@ export default function BookingPage({ params }: Props) {
       </div>
 
       <RuleBasedChat clinic={clinic} primaryColor={color} onBookingRequested={handleChatBooking} />
-      <PraxisAIBadge demo />
+      <PraxisBookBadge demo />
     </div>
   );
 }

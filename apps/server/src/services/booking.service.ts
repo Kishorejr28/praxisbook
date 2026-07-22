@@ -4,7 +4,7 @@ import { addMinutes } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 import { sendBookingConfirmation, sendCancellationEmail } from "./email.service";
 import { AppError } from "../middleware/errorHandler";
-import type { BookingRequest } from "@praxisai/types";
+import type { BookingRequest } from "@praxisbook/types";
 
 export async function createBooking(req: BookingRequest) {
   const { clinicId, doctorId, appointmentTypeId, startTime, gdprConsent } = req;

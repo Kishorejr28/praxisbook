@@ -1,5 +1,5 @@
 {
-  "name": "@praxisai/server",
+  "name": "@praxisbook/server",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.0",
-    "@praxisai/types": "workspace:*",
+    "@praxisbook/types": "workspace:*",
     "@prisma/client": "^5.14.0",
     "@sendgrid/mail": "^8.1.0",
     "bcryptjs": "^2.4.3",

@@ -1,5 +1,5 @@
 /**
- * PraxisAI — In-memory demo server (no DB or Redis required)
+ * PraxisBook — In-memory demo server (no DB or Redis required)
  * Run: node mock-server.mjs
  */
 
@@ -381,7 +381,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n✅ PraxisAI mock server running at http://localhost:${PORT}`);
+  console.log(`\n✅ PraxisBook mock server running at http://localhost:${PORT}`);
   console.log(`\n   Clinic page   → http://localhost:3000/klinik/demo-zahnarzt-walldorf`);
   console.log(`   Booking page  → http://localhost:3000/buchen/demo-zahnarzt-walldorf`);
   console.log(`   Admin panel   → http://localhost:3000/admin\n`);

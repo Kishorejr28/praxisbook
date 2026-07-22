@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: praxisai
-      POSTGRES_PASSWORD: praxisai
-      POSTGRES_DB: praxisai
+      POSTGRES_USER: praxisbook
+      POSTGRES_PASSWORD: praxisbook
+      POSTGRES_DB: praxisbook
     ports:
       - "5432:5432"
     volumes:

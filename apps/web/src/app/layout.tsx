@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "PraxisAI",
+  title: "PraxisBook",
   description: "KI-Rezeptionist für Ihre Zahnarztpraxis",
 };
 

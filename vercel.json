@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd apps/web && pnpm install && pnpm build",
+  "outputDirectory": "apps/web/.next",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "rootDirectory": "apps/web",
+  "env": {
+    "NEXT_PUBLIC_API_URL": "@praxisbook_api_url",
+    "NEXT_PUBLIC_DEMO_CLINIC_ID": "clinic-demo-001"
+  }
+}

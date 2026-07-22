@@ -1,4 +1,4 @@
-# PraxisAI — KI-Rezeptionist & Online-Terminbuchung
+# PraxisBook — KI-Rezeptionist & Online-Terminbuchung
 
 An AI-powered appointment booking system and chat receptionist for dental (and medical) clinics. Built as a monorepo with three apps:
 
@@ -20,7 +20,7 @@ An AI-powered appointment booking system and chat receptionist for dental (and m
 ### 1. Clone & install
 
 ```bash
-cd C:\tmp\praxisai
+cd C:\tmp\praxisbook
 pnpm install
 ```
 
@@ -96,9 +96,9 @@ Add to any clinic website:
 
 ```html
 <script
-  src="https://your-cdn.com/praxisai-widget.iife.js"
+  src="https://your-cdn.com/praxisbook-widget.iife.js"
   data-clinic="demo-zahnarzt-walldorf"
-  data-api="https://api.praxisai.de"
+  data-api="https://api.praxisbook.de"
   data-color="#2563eb"
   data-lang="de">
 </script>
@@ -111,7 +111,7 @@ This renders a floating chat bubble. Patients can:
 Build the widget:
 ```bash
 pnpm --filter widget build
-# Output: apps/widget/dist/praxisai-widget.iife.js
+# Output: apps/widget/dist/praxisbook-widget.iife.js
 ```
 
 ---
@@ -119,7 +119,7 @@ pnpm --filter widget build
 ## Architecture
 
 ```
-praxisai/
+praxisbook/
 ├── apps/
 │   ├── server/               Express API
 │   │   ├── prisma/

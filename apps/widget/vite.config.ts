@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "PraxisAI",
-      fileName: "praxisai-widget",
+      name: "PraxisBook",
+      fileName: "praxisbook-widget",
       formats: ["iife"],
     },
     rollupOptions: {

@@ -2,7 +2,7 @@ export function injectStyles(_color: string) {
   // Global styles are minimal — everything else lives in Shadow DOM
   const style = document.createElement("style");
   style.textContent = `
-    #praxisai-widget-host {
+    #praxisbook-widget-host {
       position: fixed;
       bottom: 24px;
       right: 24px;

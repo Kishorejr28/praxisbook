@@ -1,5 +1,5 @@
 {
-  "name": "@praxisai/widget",
+  "name": "@praxisbook/widget",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@praxisai/types": "workspace:*"
+    "@praxisbook/types": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",

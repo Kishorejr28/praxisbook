@@ -69,7 +69,7 @@ export default function AdminDashboard() {
       <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Bot className="w-7 h-7 text-brand-600" />
-          <h1 className="text-xl font-bold text-gray-800">PraxisAI Admin</h1>
+          <h1 className="text-xl font-bold text-gray-800">PraxisBook Admin</h1>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={load} className="p-2 rounded-lg hover:bg-gray-100">

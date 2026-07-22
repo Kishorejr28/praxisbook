@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import Anthropic from "@anthropic-ai/sdk";
 import { prisma } from "../lib/prisma";
 import { getAvailableSlots } from "./slots.service";
-import type { ChatMessage, ChatIntent } from "@praxisai/types";
+import type { ChatMessage, ChatIntent } from "@praxisbook/types";
 
 // Use whichever key is configured — prefer OpenAI, fall back to Anthropic
 const useOpenAI = !!process.env.OPENAI_API_KEY;

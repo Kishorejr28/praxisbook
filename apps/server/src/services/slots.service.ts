@@ -2,7 +2,7 @@ import { addMinutes, format, parseISO, isWithinInterval, setHours, setMinutes } 
 import { toZonedTime, fromZonedTime } from "date-fns-tz";
 import { prisma } from "../lib/prisma";
 import { isSlotLocked } from "../lib/redis";
-import type { AvailableSlot } from "@praxisai/types";
+import type { AvailableSlot } from "@praxisbook/types";
 
 interface GetSlotsOptions {
   clinicId: string;

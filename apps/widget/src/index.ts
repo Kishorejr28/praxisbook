@@ -1,8 +1,8 @@
-/* ─── PraxisAI Widget — embeddable chat + booking launcher ─────────────────
+/* ─── PraxisBook Widget — embeddable chat + booking launcher ─────────────────
    Usage:
-   <script src="https://cdn.praxisai.de/widget/praxisai-widget.iife.js"
+   <script src="https://cdn.praxisbook.de/widget/praxisbook-widget.iife.js"
            data-clinic="demo-zahnarzt-walldorf"
-           data-api="https://api.praxisai.de"
+           data-api="https://api.praxisbook.de"
            data-color="#2563eb"
            data-lang="de">
    </script>
@@ -45,13 +45,13 @@ function init() {
 
   // Outer host element using Shadow DOM so widget styles never clash with the clinic's website
   const host = document.createElement("div");
-  host.id = "praxisai-widget-host";
+  host.id = "praxisbook-widget-host";
   document.body.appendChild(host);
 
   const shadow = host.attachShadow({ mode: "open" });
 
   const container = document.createElement("div");
-  container.id = "praxisai-root";
+  container.id = "praxisbook-root";
   shadow.appendChild(container);
 
   // Inject scoped styles into shadow root
@@ -68,14 +68,14 @@ function init() {
       createChatUI(container, clinic, config.apiBase, config.language, color, openBooking);
     })
     .catch((err) => {
-      console.error("[PraxisAI] Failed to load widget:", err);
+      console.error("[PraxisBook] Failed to load widget:", err);
     });
 }
 
 function getScopedStyles(color: string): string {
   return `
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    #praxisai-root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; }
+    #praxisbook-root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; }
     .pai-btn-primary {
       background: ${color}; color: #fff; border: none; border-radius: 8px;
       padding: 10px 18px; cursor: pointer; font-weight: 600; font-size: 13px;

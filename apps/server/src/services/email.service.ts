@@ -30,9 +30,9 @@ function buildIcs(appt: AppointmentWithRelations): string {
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//PraxisAI//DE",
+    "PRODID:-//PraxisBook//DE",
     "BEGIN:VEVENT",
-    `UID:${appt.id}@praxisai`,
+    `UID:${appt.id}@praxisbook`,
     `DTSTART:${fmt(appt.startTime)}`,
     `DTEND:${fmt(appt.endTime)}`,
     `SUMMARY:Zahnarzttermin – ${appt.clinic.name}`,

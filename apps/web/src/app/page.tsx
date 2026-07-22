@@ -2,7 +2,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-8 p-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-brand-700 mb-2">PraxisAI</h1>
+        <h1 className="text-4xl font-bold text-brand-700 mb-2">PraxisBook</h1>
         <p className="text-gray-500 text-lg">KI-Rezeptionist & Online-Terminbuchung für Zahnarztpraxen</p>
       </div>
       <div className="flex gap-4">

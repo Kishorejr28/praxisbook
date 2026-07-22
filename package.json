@@ -1,5 +1,5 @@
 {
-  "name": "praxisai",
+  "name": "praxisbook",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {

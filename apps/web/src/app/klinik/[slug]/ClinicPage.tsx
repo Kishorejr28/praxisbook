@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
 import { RuleBasedChat } from "@/components/chat/RuleBasedChat";
-import { PraxisAIBadge } from "@/components/ui/PraxisAIBadge";
+import { PraxisBookBadge } from "@/components/ui/PraxisBookBadge";
 import {
   MapPin, Phone, Clock, Shield, Star, ChevronRight,
   CheckCircle, Car, Calendar, Globe, Menu, X,
@@ -23,7 +23,7 @@ const T = {
     reviews: { title: "Patientenbewertungen", sub: "Was unsere Patienten sagen" },
     location: { title: "Anfahrt", maps: "In Google Maps öffnen", emergency: "Notfall" },
     cta: { title: "Bereit für Ihren nächsten Termin?", sub: "Buchen Sie jetzt online — in unter 2 Minuten, rund um die Uhr", btn: "Termin buchen" },
-    footer: { privacy: "Datenschutz", imprint: "Impressum", powered: "Powered by PraxisAI" },
+    footer: { privacy: "Datenschutz", imprint: "Impressum", powered: "Powered by PraxisBook" },
   },
   en: {
     nav: { book: "Book appointment", call: "Call us" },
@@ -37,7 +37,7 @@ const T = {
     reviews: { title: "Patient Reviews", sub: "What our patients say" },
     location: { title: "Find Us", maps: "Open in Google Maps", emergency: "Emergency" },
     cta: { title: "Ready for your next appointment?", sub: "Book online now — in under 2 minutes, anytime", btn: "Book appointment" },
-    footer: { privacy: "Privacy", imprint: "Imprint", powered: "Powered by PraxisAI" },
+    footer: { privacy: "Privacy", imprint: "Imprint", powered: "Powered by PraxisBook" },
   },
 };
 
@@ -472,7 +472,7 @@ export function ClinicPage({ slug }: { slug: string }) {
       </footer>
 
       <RuleBasedChat clinic={clinic} primaryColor={color} onBookingRequested={() => { window.location.href = bookUrl; }} />
-      <PraxisAIBadge demo />
+      <PraxisBookBadge demo />
     </div>
   );
 }
